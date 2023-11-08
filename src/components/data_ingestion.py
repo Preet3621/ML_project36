@@ -5,7 +5,9 @@ from sklearn.model_selection import train_test_split
 from src.logger import logging
 from src.exception import customException
 from dataclasses import dataclass
-
+from src.components.data_transformation import DataTransformationConfig
+from src.components.data_transformation import DataTransformation
+ 
 @dataclass
 
 class DataIngetionConfig:
@@ -38,4 +40,6 @@ class DataIngetion:
         
 if __name__ == '__main__':
     obj = DataIngetion()
-    obj.initiate_data_ingetion()
+    train_data,test_data = obj.initiate_data_ingetion()
+    data_transformation = DataTransformation()
+    data_transformation.initiate_data_transformer(train_data, test_data)
